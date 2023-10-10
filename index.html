@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generate Placeholder image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>input image file and get Placeholder Image</h1>
+
+    <input id="fileinput" type="file" accept="image/*" />
+    <button class="generateBtn">generate image</button>
+
+    <div class="display-flex">
+        <h3>Preview image</h3>
+        <a href="#" id="download" download>download image</a>
+    </div>
+
+    <img alt="Preview Image" id="imagePreview" style="display: none">
+
+    <script src="app.js"></script>
+</body>
+
+</html>
