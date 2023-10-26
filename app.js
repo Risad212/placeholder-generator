@@ -7,11 +7,12 @@ generateButton.addEventListener('click', event => {
     if (fileInput.files.length > 0) {
         const img = document.createElement('img');
         const selectedImage = fileInput.files[0];
+        const fillName = fileInput.files[0].name;
         const objectURL = URL.createObjectURL(selectedImage);
 
         img.onload = function handleLoad() {
             console.log(`Width: ${img.width}, Height: ${img.height}`);
-            generateImage(img.height,img.width)
+            generateImage(img.height,img.width,fillName)
             URL.revokeObjectURL(objectURL);
         };
 
@@ -27,7 +28,7 @@ generateButton.addEventListener('click', event => {
 const imagePreview = document.getElementById("imagePreview");
 const downloadImage = document.getElementById('download');
 
-function generateImage(imageHeight,imageWidth) {
+function generateImage(imageHeight,imageWidth,fillName) {
     const canvasElement = createPlaceholderCanvas(
         imageWidth,
         imageHeight
@@ -37,9 +38,8 @@ function generateImage(imageHeight,imageWidth) {
     downloadImage.href = dataUrl;
     imagePreview.src = dataUrl;
     imagePreview.style.display = "block";
-    imagePreview.style.maxWidth = `${imageWidth}px`;
-
-    
+    imagePreview.style.width = `${imageWidth}px`;
+    downloadImage.download = fillName;
 }
 
 /**
@@ -70,4 +70,3 @@ function createPlaceholderCanvas(width, height) {
 
     return element;
 }
-
